@@ -13,48 +13,48 @@ PSX Serialpy lets you test homebrew on real PlayStation 1 hardware without burni
 
 ## Step 1: Build the cable
 
-    Follow the wiring diagram. Connect PC TX to PSX RX, PC RX to PSX TX, and GND to GND. TX and RX must cross over.
-    If your CH340G board has a voltage jumper, set it to 3.3V. The PlayStation’s serial port is 3.3V, and 5V can damage it.
+Follow the wiring diagram. Connect PC TX to PSX RX, PC RX to PSX TX, and GND to GND. TX and RX must cross over.
+If your CH340G board has a voltage jumper, set it to 3.3V. The PlayStation’s serial port is 3.3V, and 5V can damage it.
 
 ## Step 2: Prepare the console
 
-    Burn the PSXSERIAL image to a CD-R.
-    Boot it using your modchip or the swap method.
-    You should see colored bars with the title and version number, then STANDING BY.... Leave the console on this screen.
+Burn the PSXSERIAL image to a CD-R.
+Boot it using your modchip or the swap method.
+You should see colored bars with the title and version number, then STANDING BY.... Leave the console on this screen.
 
 ## Step 3: Set up the PC (one time only)
 
-    Install Python from python.org. On Windows, tick “Add Python to PATH” in the installer.
-    Open a command prompt. On Windows, press the Windows key, type cmd and press Enter. On macOS or Linux, open Terminal.
-    Install pyserial:
+Install Python from python.org. On Windows, tick “Add Python to PATH” in the installer.
+Open a command prompt. On Windows, press the Windows key, type cmd and press Enter. On macOS or Linux, open Terminal.
+Install pyserial:
 
-   pip install pyserial
+    pip install pyserial
 
-    Plug in the USB-serial module. Windows 10 and 11 usually install the CH340 driver on their own. If no port appears in the next step, download the CH340 driver from the chip maker, WCH.
+Plug in the USB-serial module. Windows 10 and 11 usually install the CH340 driver on their own. If no port appears in the next step, download the CH340 driver from the chip maker, WCH.
 
 ## Step 4: Find your serial port
 
-    Go to the folder holding the script. Example:
+Go to the folder holding the script. Example:
 
-   cd C:\psxdev\tools
+    cd C:\psxdev\tools
 
-    List the serial ports:
+List the serial ports:
 
-   python psxserialpy_v02.py --list
+    python psxserialpy_v02.py --list
 
-    Note the port marked “looks like a CH340”. It will be something like COM3 on Windows, /dev/ttyUSB0 on Linux, or /dev/cu.usbserial-xxxx on macOS.
+Note the port marked “looks like a CH340”. It will be something like COM3 on Windows, /dev/ttyUSB0 on Linux, or /dev/cu.usbserial-xxxx on macOS.
 
 ## Step 5: Upload your program
 
 ### Option A, answer the prompts:
 
-python psxserialpy_v02.py
+    python psxserialpy_v02.py
 
 When it asks for the file, you can drag the file into the window to paste its path.
 
 ### Option B, everything on one line:
 
-python psxserialpy_v02.py C:\psxdev\mygame\MYGAME.EXE COM3
+    python psxserialpy_v02.py C:\psxdev\mygame\MYGAME.EXE COM3
 
 When it works, you’ll see “Console answered”, then a progress counter, then “Upload finished”, and your program starts on the PlayStation.
 
